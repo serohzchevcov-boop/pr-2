@@ -1,0 +1,291 @@
+import java.time.LocalDate;
+
+class User {
+    int id;
+    String name;
+    String surname;
+    String email;
+    String password;
+
+    User(int id, String name, String surname, String email, String password) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+    }
+
+    void login() {
+    }
+
+    void logout() {
+    }
+
+    public String toString() {
+        return "User: " + id + ", " + name + " " + surname +
+                ", " + email + ", " + password;
+    }
+}
+
+
+class Student {
+    int id;
+    String name;
+    String surname;
+    String email;
+    LocalDate registrationDate;
+
+    Student(int id, String name, String surname,
+            String email, LocalDate registrationDate) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.registrationDate = registrationDate;
+    }
+
+    void viewCourses() {
+    }
+
+    void enrollCourse() {
+    }
+
+    public String toString() {
+        return "Student: " + id + ", " + name + " " + surname +
+                ", " + email + ", " + registrationDate;
+    }
+}
+
+
+class Teacher {
+    int id;
+    String name;
+    String surname;
+    String email;
+    String specialization;
+
+    Teacher(int id, String name, String surname,
+            String email, String specialization) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.specialization = specialization;
+    }
+
+    void createCourse() {
+    }
+
+    void addLesson() {
+    }
+
+    public String toString() {
+        return "Teacher: " + id + ", " + name + " " + surname +
+                ", " + email + ", " + specialization;
+    }
+}
+
+
+class Course {
+    int id;
+    String name;
+    String description;
+    String category;
+    int duration;
+    int teacherId;
+
+    Course(int id, String name, String description,
+           String category, int duration, int teacherId) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.category = category;
+        this.duration = duration;
+        this.teacherId = teacherId;
+    }
+
+    void addLesson() {
+    }
+
+    void addAssignment() {
+    }
+
+    public String toString() {
+        return "Course: " + id + ", " + name +
+                ", " + description + ", " + category +
+                ", " + duration + " hours, teacher: " + teacherId;
+    }
+}
+
+
+class Lesson {
+    int id;
+    String name;
+    String description;
+    String material;
+    int number;
+    int courseId;
+
+    Lesson(int id, String name, String description,
+           String material, int number, int courseId) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.material = material;
+        this.number = number;
+        this.courseId = courseId;
+    }
+
+    void openLesson() {
+    }
+
+    void viewMaterial() {
+    }
+
+    public String toString() {
+        return "Lesson: " + id + ", " + name +
+                ", " + description + ", " + material +
+                ", number: " + number + ", course: " + courseId;
+    }
+}
+
+
+class Assignment {
+    int id;
+    String name;
+    String description;
+    double maxGrade;
+    LocalDate deadline;
+    int courseId;
+
+    Assignment(int id, String name, String description,
+               double maxGrade, LocalDate deadline, int courseId) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.maxGrade = maxGrade;
+        this.deadline = deadline;
+        this.courseId = courseId;
+    }
+
+    void submit() {
+    }
+
+    void checkResult() {
+    }
+
+    public String toString() {
+        return "Assignment: " + id + ", " + name +
+                ", " + description + ", grade: " + maxGrade +
+                ", deadline: " + deadline + ", course: " + courseId;
+    }
+}
+
+
+class Enrollment {
+    int id;
+    int studentId;
+    int courseId;
+    LocalDate date;
+    String status;
+    double progress;
+
+    Enrollment(int id, int studentId, int courseId,
+               LocalDate date, String status, double progress) {
+        this.id = id;
+        this.studentId = studentId;
+        this.courseId = courseId;
+        this.date = date;
+        this.status = status;
+        this.progress = progress;
+    }
+
+    void updateProgress() {
+    }
+
+    void changeStatus() {
+    }
+
+    public String toString() {
+        return "Enrollment: " + id +
+                ", student: " + studentId +
+                ", course: " + courseId +
+                ", date: " + date +
+                ", status: " + status +
+                ", progress: " + progress + "%";
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+
+        User user = new User(
+                1,
+                "Олександр",
+                "Шевцов",
+                "alex@gmail.com",
+                "12345"
+        );
+
+        Student student = new Student(
+                2,
+                "Олександр",
+                "Шевцов",
+                "student@gmail.com",
+                LocalDate.of(2026, 9, 1)
+        );
+
+        Teacher teacher = new Teacher(
+                3,
+                "Андрій",
+                "Куляк",
+                "teacher@gmail.com",
+                "Програмування"
+        );
+
+        Course course = new Course(
+                101,
+                "Об'єктно-орієнтоване програмування",
+                "Вивчення Java та ООП",
+                "Програмування",
+                72,
+                3
+        );
+
+        Lesson lesson = new Lesson(
+                201,
+                "Класи та об'єкти",
+                "Основи класів Java",
+                "Навчальний матеріал",
+                1,
+                101
+        );
+
+        Assignment assignment = new Assignment(
+                301,
+                "Практична робота №2",
+                "Створення класу Java",
+                12,
+                LocalDate.of(2026, 10, 10),
+                101
+        );
+
+        Enrollment enrollment = new Enrollment(
+                401,
+                2,
+                101,
+                LocalDate.of(2026, 10, 1),
+                "active",
+                25
+        );
+
+        System.out.println(user);
+        System.out.println(student);
+        System.out.println(teacher);
+        System.out.println(course);
+        System.out.println(lesson);
+        System.out.println(assignment);
+        System.out.println(enrollment);
+    }
+}
